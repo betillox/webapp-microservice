@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-db
+spec:
+  selector:
+    matchLabels:
+      appdb: testdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        appdb: testdb
+    spec:
+      containers:
+      - name: test-db
+        image: mongo:3.3
+        env:
+        - name: MONGODB_DATABASE
+          value: testdata
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mongodb-pvc
+      volumes:
+        - name: mongodb-pvc
+          persistentVolumeClaim:
+            claimName: mongodb

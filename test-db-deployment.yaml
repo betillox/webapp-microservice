@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       appdb: testdb
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -21,7 +21,7 @@ spec:
         ports:
         - containerPort: 27017
         volumeMounts:
-          - mountPath: /var/lib/mysql
+          - mountPath: /data/mongo/
             name: mongodb-pvc
       volumes:
         - name: mongodb-pvc

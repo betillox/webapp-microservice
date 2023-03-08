@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test
+  name: web-app
   labels:
-    apps: test
+    apps: web-app
 spec:
   type: NodePort
   ports:
@@ -12,5 +12,5 @@ spec:
     port: 5000
     protocol: TCP
   selector:
-    app: test
+    app: web-app
 

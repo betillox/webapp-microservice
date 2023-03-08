@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test
+  name: web-app
 spec:
   selector:
     matchLabels:
-      app: test
+      app: web-app
   replicas: 1
   template:
     metadata:
       labels:
-        app: test
+        app: web-app
     spec:
       containers:
-      - name: test-app
+      - name: web-app
         image: teamcloudyuga/rsvpapp
         env:
         - name: MONGODB_HOST
@@ -27,4 +27,4 @@ spec:
       volumes:
         - name: webapp-pvc
           persistentVolumeClaim:
-            claimName: webapp
+            claimName: web-app

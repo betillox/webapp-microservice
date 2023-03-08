@@ -5,12 +5,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      appdb: testdb
+      appdb: mongodb
   replicas: 2
   template:
     metadata:
       labels:
-        appdb: testdb
+        appdb: mongodb
     spec:
       containers:
       - name: test-db
